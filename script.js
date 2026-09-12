@@ -1,7 +1,6 @@
-
 let display = document.getElementById("display");
 
-// Number and operator buttons
+// Display वर value add करणे
 function appendValue(value) {
     if (display.value === "0" || display.value === "Error") {
         display.value = value;
@@ -10,12 +9,21 @@ function appendValue(value) {
     }
 }
 
-// Clear display
+// पूर्ण display clear करणे
 function clearDisplay() {
     display.value = "0";
 }
 
-// Calculate result
+// शेवटचा character delete करणे
+function deleteLast() {
+    if (display.value.length > 1) {
+        display.value = display.value.slice(0, -1);
+    } else {
+        display.value = "0";
+    }
+}
+
+// Calculation करणे
 function calculateResult() {
     try {
         display.value = eval(display.value);
@@ -25,7 +33,7 @@ function calculateResult() {
 }
 
 // Keyboard support
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
     const key = event.key;
 
     if (
@@ -34,12 +42,18 @@ document.addEventListener("keydown", function(event) {
         key === "-" ||
         key === "*" ||
         key === "/" ||
-        key === "."
+        key === "." ||
+        key === "%"
     ) {
         appendValue(key);
-    } else if (key === "Enter") {
+    } 
+    else if (key === "Enter") {
         calculateResult();
-    } else if (key === "Escape") {
+    } 
+    else if (key === "Escape") {
         clearDisplay();
+    } 
+    else if (key === "Backspace") {
+        deleteLast();
     }
 });

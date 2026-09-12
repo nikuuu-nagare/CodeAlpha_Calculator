@@ -1,91 +1,185 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #e0e7ff;
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 
+    background:
+        radial-gradient(circle at top left, #5b21b6, transparent 35%),
+        radial-gradient(circle at bottom right, #0e7490, transparent 35%),
+        linear-gradient(135deg, #09001f, #111827);
+}
+
+/* Main Calculator Box */
+.calculator-container {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .calculator {
-    background: #1e293b;
+    width: 360px;
+    max-width: 100%;
     padding: 25px;
-    border-radius: 15px;
-    width: 320px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 28px;
+
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(139, 92, 246, 0.25);
 }
 
-.calculator h2 {
-    color: white;
-    text-align: center;
+/* Header */
+.calculator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
+.calculator-header h2 {
+    color: #ffffff;
+    font-size: 23px;
+    letter-spacing: 1px;
+}
+
+.calculator-header span {
+    font-size: 24px;
+}
+
+/* Display */
 #display {
     width: 100%;
-    height: 60px;
-    margin-bottom: 20px;
-    padding: 10px;
-
-    font-size: 28px;
-    text-align: right;
+    height: 85px;
+    margin-bottom: 22px;
+    padding: 15px;
 
     border: none;
-    border-radius: 8px;
-    background: #f8fafc;
-    color: #111827;
+    outline: none;
+    border-radius: 18px;
+
+    background: rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+
+    font-size: 35px;
+    font-weight: bold;
+    text-align: right;
+
+    box-shadow:
+        inset 0 0 12px rgba(0, 0, 0, 0.5),
+        0 0 12px rgba(34, 211, 238, 0.15);
 }
 
+/* Buttons Grid */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 13px;
 }
 
+/* Common Button Design */
 button {
-    height: 55px;
-    font-size: 22px;
+    height: 62px;
     border: none;
-    border-radius: 8px;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.13);
+    color: #ffffff;
+
+    font-size: 21px;
+    font-weight: 600;
+
     cursor: pointer;
-    background: #e2e8f0;
-    color: #111827;
+    transition: 0.2s ease;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.25),
+        inset 0 1px rgba(255, 255, 255, 0.08);
 }
 
+/* Hover Effect */
 button:hover {
-    background: #cbd5e1;
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.4);
 }
 
-.operator {
-    background: #f59e0b;
-    color: white;
-}
-
-.operator:hover {
-    background: #d97706;
-}
-
-.clear {
-    background: #ef4444;
-    color: white;
-}
-
-.clear:hover {
-    background: #dc2626;
-}
-
+/* Click Effect */
 button:active {
-    transform: scale(0.95);
+    transform: scale(0.94);
 }
 
-.zero {
-    grid-column: span 3;
+/* Special Buttons */
+button.special {
+    background: linear-gradient(135deg, #ec4899, #be185d);
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.3);
+}
+
+button.special:hover {
+    box-shadow: 0 0 22px rgba(236, 72, 153, 0.7);
+}
+
+/* Operator Buttons */
+button.operator {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+}
+
+button.operator:hover {
+    box-shadow: 0 0 22px rgba(139, 92, 246, 0.7);
+}
+
+/* Equal Button */
+button.equal {
+    background: linear-gradient(135deg, #06b6d4, #2563eb);
+    box-shadow: 0 0 18px rgba(6, 182, 212, 0.4);
+}
+
+button.equal:hover {
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.8);
+}
+
+/* Zero Button */
+button.zero {
+    grid-column: span 2;
+}
+
+/* Footer */
+.footer-text {
+    margin-top: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 400px) {
+    .calculator {
+        padding: 18px;
+    }
+
+    button {
+        height: 56px;
+        font-size: 19px;
+    }
+
+    #display {
+        height: 75px;
+        font-size: 29px;
+    }
 }
